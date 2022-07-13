@@ -24,7 +24,7 @@ export default class CarController extends Controller<Car> {
     try {
       const car = await this.service.create(newCar);
       if (!car) { 
-        return res.status(500).json({ error: this.errors.internal });
+        return res.status(400).json({ error: this.errors.internal });
       }
       if ('error' in car) {
         return res.status(400).json(car);
