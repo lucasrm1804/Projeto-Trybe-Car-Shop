@@ -22,15 +22,15 @@ describe('Testes para camada Service', () => {
 
     describe('testa get da service', () => {
       beforeEach(() => {
-        sinon.stub(ser, "create").resolves(validCar);
+        sinon.stub(Model, "find").resolves([validCar]);
       });
       afterEach(() => {
-        (Model.create as SinonStub).restore();
+        (Model.find as SinonStub).restore();
       })
       it('retorna todos os carros', async () => {
         const carService = new CarService();
         const getAll = await carService.read();
-        expect(getAll).to.be.deep.equal(validCar)
+        expect(getAll).to.be.deep.equal([validCar])
       })
 
   })
