@@ -39,8 +39,8 @@ describe('Testes para camada Service', () => {
       sinon.stub(Model, "findOne").resolves([validCar]);
     });
     afterEach(() => {
-      (Model.find as SinonStub).restore();
-    })
+      (Model.findOne as SinonStub).restore();
+    });
     it('retorna dados pra um Id da service', async () => {
       const carService = new CarService();
       const getById = await carService.readOne('4edd40c86762e0fb12000003');
