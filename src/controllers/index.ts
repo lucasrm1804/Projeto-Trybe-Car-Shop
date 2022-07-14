@@ -14,6 +14,7 @@ enum ControllerErrors {
   notFound = 'Object not found',
   requiredId = 'Id is required',
   badRequest = 'Bad request',
+  mustCharacters = 'Id must have 24 hexadecimal characters',  
 }
 
 abstract class Controller<T> {
@@ -45,15 +46,15 @@ abstract class Controller<T> {
     res: Response<T | ResponseError>,
   ): Promise<typeof res>;
 
-  // abstract update(
-  //   req: Request,
-  //   res: Response<T[] | ResponseError>,
-  // ): Promise<typeof res>;
+  abstract update(
+    req: Request<{ id: string; }>,
+    res: Response<T | ResponseError>
+  ): Promise<typeof res>;
 
-  // abstract delete(
-  //   _req: Request<{ id: string; }>,
-  //   res: Response<T[] | ResponseError>,
-  // ): Promise<typeof res>;
+  abstract delete(
+    _req: Request<{ id: string; }>,
+    res: Response<T | ResponseError>,
+  ): Promise<typeof res>;
 }
 
 export default Controller;
