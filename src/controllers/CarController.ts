@@ -36,4 +36,4 @@ class CarController extends Controller<Car> {
   };
 }
 
-export default CarController
+export default CarController;
