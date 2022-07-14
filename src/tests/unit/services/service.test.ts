@@ -32,6 +32,19 @@ describe('Testes para camada Service', () => {
         const getAll = await carService.read();
         expect(getAll).to.be.deep.equal([validCar])
       })
+  })
 
+  describe('testa get by Id da service', () => {
+    beforeEach(() => {
+      sinon.stub(Model, "findOne").resolves([validCar]);
+    });
+    afterEach(() => {
+      (Model.find as SinonStub).restore();
+    })
+    it('retorna dados pra um Id da service', async () => {
+      const carService = new CarService();
+      const getById = await carService.readOne('4edd40c86762e0fb12000003');
+      expect(getById).to.be.deep.equal([validCar])
+    })
   })
 })
