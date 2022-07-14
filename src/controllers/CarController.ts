@@ -1,14 +1,14 @@
 import { Response } from 'express';
-import Controller, { RequestWithBody, ResponseError } from '.';
+import Controller, { RequestWithBody, ResponseError } from './index';
 import CarService from '../services/CarService';
 import { Car } from '../interfaces/CarInterface';
 
-export default class CarController extends Controller<Car> {
+class CarController extends Controller<Car> {
   private _route: string;
-  
+
   constructor(
     service = new CarService(),
-    route = '/cars ',
+    route = '/cars',
   ) {
     super(service);
     this._route = route;
@@ -35,3 +35,5 @@ export default class CarController extends Controller<Car> {
     }
   };
 }
+
+export default CarController

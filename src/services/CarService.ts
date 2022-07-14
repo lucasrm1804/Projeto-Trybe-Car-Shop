@@ -16,4 +16,4 @@ class CarService extends Service<Car> {
   };
 }
 
-export default CarService;
+export default CarService; 
